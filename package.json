@@ -1,0 +1,27 @@
+{
+  "name": "playwright-explorations",
+  "version": "0.0.0",
+  "description": "Playground to experiment with Playwright",
+  "main": "test.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "launch": "node start",
+    "setup": "node setup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iskandarreza/playwright-explorations.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iskandarreza/playwright-explorations/issues"
+  },
+  "homepage": "https://github.com/iskandarreza/playwright-explorations#readme",
+  "dependencies": {
+    "playwright": "^1.27.1"
+  }
+}
