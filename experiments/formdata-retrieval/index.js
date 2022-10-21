@@ -1,20 +1,63 @@
 const fs = require('fs')
 const path = require('path')
-const { chromium } = require('playwright')
+const { chromium, devices } = require('playwright')
 
-/** Just a test to retrieve formdata */
+/* Setting the path to the config file and the path to the configurator page. */
+const configFilePath = path.join(path.resolve('./config'), 'browser.config.json')
+const configuratorPath = `file://${path.resolve('experiments/formdata-retrieval/index.html')}`
 
 /**
- * It opens a browser, navigates to a local html file, waits for a console.log event, then closes the
- * browser.
+ * If the config file exists, read it, otherwise return an empty object.
+ * @returns The config object.
  */
+const readConfig = () => {
+  return fs.existsSync(configFilePath) ? require(configFilePath) : {}
+}
+const writeConfig = (config) => {
+  fs.writeFile(path.join(configFilePath), JSON.stringify(config, null, 4), (err) => {
+    if (err) console.error(err) 
+  })
+}
+
 const init = async () => {
+  const lastConfig = readConfig()
   const browser = await chromium.launch({ headless: false, timeout: 0 })
   const browserContext = await browser.newContext({ viewport: null })
   const page = await browserContext.newPage()
 
-  await page.goto(`file://${path.resolve('experiments/formdata-retrieval/index.html')}`)
+  const startUrl = page.locator('#startUrl input')
+  const variations = page.locator('#variations input')
+  const browserType = page.locator('#browserType select')
 
+  await page.goto(configuratorPath)
+
+  /* Adding the options to the select element. */
+  await page.evaluate((options) => {
+    const browserTypeSelect = document.querySelector('#browserType select')
+    Object.keys(options).forEach((key) => {
+      const opt = document.createElement('option')
+      opt.textContent = key
+      opt.value = key
+      browserTypeSelect.appendChild(opt)
+    })
+
+  }, devices)
+
+  /* Filling the form with the values from the config file. */
+  await startUrl.fill(lastConfig?.startUrl)
+  if (lastConfig?.variations?.length > 0) {
+    let varStr = ''
+    lastConfig.variations.forEach((v) => {
+      varStr += `${v.trim()}, `
+    })
+    await variations.fill(varStr.slice(0, -2))
+  }
+  await browserType.selectOption(lastConfig?.browserType)
+
+  await startUrl.focus()
+
+  /* Waiting for the console to log a message that contains the word 'submit' and has a type of
+  'debug'. */
   await page.waitForEvent('console', {
     predicate: async (message) => {
       const text = message.text()
@@ -25,10 +68,10 @@ const init = async () => {
 
         let data = {}
         data.startUrl = startUrl
-        data.variations = variations
+        data.variations = variations.split(',').map((v) => { return v.trim() })
         data.browserType = browserType
 
-        console.log(data)
+        writeConfig(data)
 
         await page.waitForTimeout(1000)
         return true

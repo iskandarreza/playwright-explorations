@@ -1,4 +1,9 @@
 {
-    "url": "https://google.com",
-    "browserType": "chromium"
+    "startUrl": "https://google.com",
+    "variations": [
+        "a",
+        "g",
+        "h"
+    ],
+    "browserType": "Moto G4"
 }

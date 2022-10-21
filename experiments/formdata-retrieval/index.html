@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Form Data Retrieval with Playwright</title>
+	<title>Form Data Input & Retrieval with Playwright</title>
 	<meta charset="UTF-8" />
 	<link href="styles.css" rel="stylesheet">
 </head>
@@ -12,11 +12,11 @@
     <form id="config-form">
       <h1>Browser Configuration</h1>
       <div id="startUrl" class="form-group">
-        <input type="text" required="required" />
+        <input aria-label="Target URL" type="text" required="required" />
         <label for="input" class="control-label">Target URL</label><i class="bar"></i>
       </div>
       <div id="variations" class="form-group">
-        <input type="text" required="required" />
+        <input aria-label="Variations (comma separated)" type="text" required="required" />
         <label for="input" class="control-label">Variations (comma separated)</label><i class="bar"></i>
       </div>
       <div id="browserType" class="form-group">
