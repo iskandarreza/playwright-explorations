@@ -9,7 +9,7 @@ const { chromium } = require('playwright')
  * browser.
  */
 const init = async () => {
-  const browser = await chromium.launch({ headless: false, timeout: 15000 })
+  const browser = await chromium.launch({ headless: false, timeout: 0 })
   const browserContext = await browser.newContext({ viewport: null })
   const page = await browserContext.newPage()
 
@@ -18,13 +18,15 @@ const init = async () => {
   await page.waitForEvent('console', {
     predicate: async (message) => {
       const text = message.text()
-      if (text.includes('byebye') && message.type() === 'debug') {
-        const fname = await page.inputValue('#fname')
-        const lname = await page.inputValue('#lname')
+      if (text.includes('submit') && message.type() === 'debug') {
+        const startUrl = await page.inputValue('#startUrl input')
+        const variations = await page.inputValue('#variations input')
+        const browserType = await page.inputValue('#browserType select')
 
         let data = {}
-        data.fname = fname
-        data.lname = lname
+        data.startUrl = startUrl
+        data.variations = variations
+        data.browserType = browserType
 
         console.log(data)
 

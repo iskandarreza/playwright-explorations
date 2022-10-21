@@ -4,23 +4,35 @@
 <head>
 	<title>Form Data Retrieval with Playwright</title>
 	<meta charset="UTF-8" />
+	<link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
-	<div id="app">
-		<h1>Hello World</h1>
-	
-		<form id="test-form">
-			<label for="fname">First name:</label>
-			<input type="text" id="fname" name="fname"><br><br>
-			<label for="lname">Last name:</label>
-			<input type="text" id="lname" name="lname"><br><br>
-		</form>	
-		<span id="message">Fill it up and click submit</span>
-		<br>
-		<button id="submit" type="button">Submit</button>
-		
-	</div>
+  <div class="container">
+    <form id="config-form">
+      <h1>Browser Configuration</h1>
+      <div id="startUrl" class="form-group">
+        <input type="text" required="required" />
+        <label for="input" class="control-label">Target URL</label><i class="bar"></i>
+      </div>
+      <div id="variations" class="form-group">
+        <input type="text" required="required" />
+        <label for="input" class="control-label">Variations (comma separated)</label><i class="bar"></i>
+      </div>
+      <div id="browserType" class="form-group">
+        <select>
+          <option>Chromium</option>
+          <option>Firefox</option>
+          <option>Webkit</option>
+        </select>
+        <label for="select" class="control-label">Selectbox</label><i class="bar"></i>
+      </div>
+
+    </form>
+    <div class="button-container">
+      <button id="submit" type="button" class="button"><span>Save Config</span></button>
+    </div>
+  </div>
 
 	<script src="script.js">
 	</script>

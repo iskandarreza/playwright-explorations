@@ -1,3 +1,3 @@
 document.getElementById('submit').addEventListener('click',  () => {
-  console.debug('byebye')
+  console.debug('submit')
 })
