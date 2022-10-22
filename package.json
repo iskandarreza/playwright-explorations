@@ -8,7 +8,7 @@
   },
   "scripts": {
     "launch": "node start",
-    "setup": "node setup"
+    "config": "node setup"
   },
   "repository": {
     "type": "git",
