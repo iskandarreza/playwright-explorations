@@ -2,13 +2,14 @@
   "name": "playwright-explorations",
   "version": "0.0.0",
   "description": "Playground to experiment with Playwright",
-  "main": "test.js",
+  "main": "start.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "launch": "node start",
-    "setup": "node setup"
+    "config": "node setup",
+    "config-ui": "node experiments/formdata-retrieval"
   },
   "repository": {
     "type": "git",
