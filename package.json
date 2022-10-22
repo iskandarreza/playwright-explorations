@@ -8,8 +8,10 @@
   },
   "scripts": {
     "launch": "node start",
+    "launch-multi": "node multi",
     "config": "node setup",
-    "config-ui": "node experiments/formdata-retrieval"
+    "config-ui": "node experiments/formdata-retrieval",
+    "config-multi": "node experiments/launch-multiple-browsers"
   },
   "repository": {
     "type": "git",
