@@ -1,4 +1,14 @@
 {
-    "url": "https://google.com",
-    "browserType": "chromium"
+    "startUrl": "https://www.whatsmyua.info/",
+    "variations": [
+        "a",
+        "g",
+        "h"
+    ],
+    "browserType": "Desktop Firefox HiDPI",
+    "multiBrowser": [
+        "Pixel 5",
+        "iPhone 11 Pro Max",
+        "Desktop Firefox HiDPI"
+    ]
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Multi-browser Configurator</title>
+	<meta charset="UTF-8" />
+	<link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <form id="config-form">
+      <h1>Browser Configuration</h1>
+      <div id="startUrl" class="form-group">
+        <input aria-label="Target URL" type="text" required="required" />
+        <label for="input" class="control-label">Target URL</label><i class="bar"></i>
+      </div>
+      <div id="variations" class="form-group">
+        <input aria-label="Variations (comma separated)" type="text" required="required" />
+        <label for="input" class="control-label">Variations (comma separated)</label><i class="bar"></i>
+      </div>
+      <div id="browserType" class="form-group">
+        <select>
+          <option>Chromium</option>
+          <option>Firefox</option>
+          <option>Webkit</option>
+        </select>
+        <label for="select" class="control-label">Choose Browser/Device</label><i class="bar"></i>
+        <button id="add" type="button" class="button"><span>Add</span></button>
+      </div>
+      <div class="selected-browsers"></div>
+
+    </form>
+    <div class="button-container">
+      <button id="submit" type="button" class="button"><span>Save Config</span></button>
+    </div>
+  </div>
+
+	<script src="script.js">
+	</script>
+</body>
+
+</html>
