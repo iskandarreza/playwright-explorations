@@ -8,7 +8,7 @@
   },
   "scripts": {
     "launch": "node start",
-    "setup": "node setup"
+    "config": "node setup"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/iskandarreza/playwright-explorations#readme",
   "dependencies": {
+    "chalk": "4.1.2",
     "playwright": "^1.27.1"
   }
 }
