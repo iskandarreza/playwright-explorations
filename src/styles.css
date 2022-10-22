@@ -214,3 +214,40 @@ h1 {
 .button:focus {
   outline: none;
 }
+
+#browserType {
+  display: flex
+}
+#browserType #add {
+  margin: 0;
+  margin-left: 15px;
+  top: -15px;
+}
+
+.selection-container span {
+  font-size: 0.8rem;
+  color: gray;
+  top: -1rem;
+  left: 0;
+}
+.selected-browsers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 50px;
+  border: 1px solid #999;
+}
+.selected-browsers .tag {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  margin: 3px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  width: -webkit-fill-available;
+  height: fit-content;
+}
+.tag .remove::before {
+  content: 'Remove';
+  cursor: pointer;
+}
