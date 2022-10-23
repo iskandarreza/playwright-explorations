@@ -2,13 +2,14 @@
   "name": "playwright-explorations",
   "version": "0.0.0",
   "description": "Playground to experiment with Playwright",
-  "main": "test.js",
+  "main": "start.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "launch": "node start",
-    "config": "node setup"
+    "config": "node setup",
+    "config-ui": "node experiments/formdata-retrieval"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,10 @@
   "dependencies": {
     "chalk": "4.1.2",
     "playwright": "^1.27.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/eslint-parser": "^7.16.5",
+    "eslint": "^7.5.0 "
   }
 }
