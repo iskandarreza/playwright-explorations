@@ -59,6 +59,8 @@ const init = async () => {
       const text = message.text()
       if (text.includes('submit') && message.type() === 'debug') {
         const startUrl = await page.inputValue('#startUrl input')
+        const headless = await page.isChecked('#headless input')
+        const overrideViewport = await page.isChecked('#viewport input')
 
         const getBrowserChoices = () => {
           console.log(window.browserChoices)
@@ -69,6 +71,14 @@ const init = async () => {
         let data = {}
         data.startUrl = startUrl
         data.multiBrowser = browserChoices
+        data.headless = headless
+        if (overrideViewport) {
+          let value = await page.inputValue('#viewport select')
+          data.viewport = {
+            width: parseInt(value.split('x')[0]),
+            height: parseInt(value.split('x')[1])
+          }
+        }
         await writeConfig(data)
 
         await page.waitForTimeout(1000)

@@ -13,7 +13,7 @@ const init = () => {
   try {
     const config = require(browserConfigFile)
     const launchAsync = async (item) => {
-      await launchBrowser({ headless: false, timeout: 10000, deviceDescription: item, viewport: { width: 1920, height: 1080 } })
+      await launchBrowser({ deviceDescription: item, viewport: config.viewport, headless: config.headless, timeout: 10000, })
     }
     
     if (config?.multiBrowser?.length === 0) {
