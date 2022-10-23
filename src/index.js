@@ -13,7 +13,7 @@ const configuratorPath = `file://${path.resolve('src/index.html')}`
 const readConfig = () => {
   return fs.existsSync(configFilePath) ? require(configFilePath) : { startUrl: 'about:blank', multiBrowser: ['Desktop Firefox'] }
 }
-const writeConfig = (config) => {
+const writeConfig = async (config) => {
   fs.writeFile(path.join(configFilePath), JSON.stringify(config, null, 4), (err) => {
     if (err) console.error(err)
   })
@@ -69,7 +69,7 @@ const init = async () => {
         let data = {}
         data.startUrl = startUrl
         data.multiBrowser = browserChoices
-        writeConfig(data)
+        await writeConfig(data)
 
         await page.waitForTimeout(1000)
         return true
