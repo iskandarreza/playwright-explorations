@@ -1,8 +1,23 @@
 window.browserChoices = []
 
 document.getElementById('submit').addEventListener('click',  () => {
+  let isValid = false
   document.querySelector('.selected-browsers').childNodes.forEach((e) => { window.browserChoices.push(e.firstChild.innerText) })
-  console.debug('submit')  
+  if (window.browserChoices.length > 0){
+    isValid = true
+  } else {
+    document.getElementById('browserType').classList.add('has-error')
+    isValid = false
+  }
+  if (document.querySelector('#startUrl input').value) {
+    isValid = true
+  } else {
+    isValid = false
+    document.getElementById('startUrl').classList.add('has-error')
+  }
+  if (isValid) {
+    console.debug('submit')  
+  }
 })
 
 window.addEventListener('click', (e) => {
@@ -22,4 +37,12 @@ document.getElementById('add').addEventListener('click', () => {
   tag.appendChild(text)
   tag.appendChild(remove)
   document.querySelector('.selected-browsers').appendChild(tag)
+})
+
+document.querySelector('#viewport label').addEventListener('click', () => {
+  if (document.querySelector('#viewport input').checked) {
+    document.querySelector('#viewport .form-group').setAttribute('style', 'display: unset')
+  } else {
+    document.querySelector('#viewport .form-group').setAttribute('style', 'display: none')
+  }
 })

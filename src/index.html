@@ -16,9 +16,33 @@
         <label for="input" class="control-label">Target URL</label><i class="bar"></i>
       </div>
       <div id="browserType" class="form-group">
-        <select></select>
-        <label for="select" class="control-label">Choose browser(s) / device(s) to run</label><i class="bar"></i>
+        <div>
+          <select></select>
+          <label for="select" class="control-label">Choose browser(s) / device(s) to run</label><i class="bar"></i>
+        </div>
         <button id="add" type="button" class="button"><span>Add</span></button>
+      </div>
+      <div id="viewport" class="form-group">
+        <div class="checkbox">
+          <label>
+            <input aria-label="Override Viewport" type="checkbox"/><i class="helper"></i>Override Viewport (Desktop only)
+          </label>
+        </div>
+        <div class="form-group" style="display: none;">
+          <select>
+            <option value="1920x1080">1920x1080</option>
+            <option value="1366x768">1366x768</option>
+            <option value="1280x1024">1280x1024</option>
+            <option value="1280x800">1280x800</option>
+            <option value="1024x768">1024x768</option>
+          </select>
+          <label for="select" class="control-label">Choose viewport dimenstions</label><i class="bar"></i>
+        </div>
+      </div>
+      <div id="headless" class="checkbox">
+        <label>
+          <input aria-label="Headless Mode" type="checkbox"/><i class="helper"></i>Headless Mode
+        </label>
       </div>
     </form>
     <div class="selection-container">
